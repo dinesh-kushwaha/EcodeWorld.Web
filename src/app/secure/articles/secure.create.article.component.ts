@@ -92,7 +92,7 @@ export class SecureCreateArticleComponent implements OnInit {
 
   //Maters data
   public postsCategories: Array<PostsCategories>;
-  public postsomplexityLevels: Array<ComplexityLevels>;
+  public postsomplexityLevels: Array<PostsComplexityLevels>;
   public postStatuss: Array<PostStatus>;
   public postsTypes: Array<PostsType>;
 
