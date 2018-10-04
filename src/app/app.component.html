@@ -1,0 +1,6 @@
+<!-- <div class="loading">Loading&#8230;</div> -->
+<div *ngIf="isBusy" class="loading">
+    <mat-progress-spinner style="display: none; margin:0 auto;" mode="indeterminate"></mat-progress-spinner>
+</div>
+
+<router-outlet></router-outlet>

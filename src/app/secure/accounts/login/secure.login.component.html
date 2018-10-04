@@ -1,0 +1,43 @@
+<div class="container">
+    <mat-card class="example-card">
+        <mat-card-header>
+            <mat-card-title>E Code World Sign In </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form class="example-form">
+                <table class="example-full-width" cellspacing="0">
+                    <tr>
+                        <td>
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button (click)="login()" color="primary">Login</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+<div id="background-wrap">
+    <div class="bubble x1"></div>
+    <div class="bubble x2"></div>
+    <div class="bubble x3"></div>
+    <div class="bubble x4"></div>
+    <div class="bubble x5"></div>
+    <div class="bubble x6"></div>
+    <div class="bubble x7"></div>
+    <div class="bubble x8"></div>
+    <div class="bubble x9"></div>
+    <div class="bubble x10"></div>
+</div>

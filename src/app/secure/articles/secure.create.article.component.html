@@ -1,0 +1,202 @@
+<div id="page-wrapper">
+    <!-- <input id="file_dk" #file type="file" multiple /> -->
+    <!-- <input  #file type="file" multiple (change)="upload(file.files)" /> -->
+    <mat-card>
+        <!--         
+        <div>Fields marked with (*) are mandatory.</div> -->
+        <div class="example-container">
+            <form novalidate class="example-container" name="createArticle">
+                <mat-radio-group name="articleType">
+                    <mat-radio-button *ngFor="let pt of postsTypes">{{pt.ptype}}</mat-radio-button>
+                </mat-radio-group>
+                <mat-form-field>
+                    <input name="title" matInput [(ngModel)]="article.title" placeholder="Article Title" type="text">
+                    <!-- <mat-error>
+                                {{errors.firstName}}
+                            </mat-error> -->
+                </mat-form-field>
+                <div class="column">
+                    <mat-form-field fxFlex>
+                        <input name="scheduleDate" matInput [(ngModel)]="article.scheduleDate" [matDatepicker]="picker" placeholder="Schedule Date">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <!-- <mat-error>
+                            {{errors.firstName}}
+                        </mat-error> -->
+                    </mat-form-field>
+                </div>
+                <mat-form-field>
+                    <textarea name="description" matInput [(ngModel)]="article.description" placeholder="Description" type="text"></textarea>
+                    <mat-error>
+                        {{errors.description}}
+                    </mat-error>
+                </mat-form-field>
+                <div class="column">
+                    <mat-form-field fxFlex>
+                        <input name="authorName" matInput [(ngModel)]="article.authorName" placeholder="Author Name" type="text">
+                        <!-- <mat-error>
+                                {{errors.firstName}}
+                            </mat-error> -->
+                    </mat-form-field>
+                </div>
+                <div class="column">
+                    <mat-form-field fxFlex>
+                        <mat-select name="complexityLevel" placeholder="Complexity Level" [(ngModel)]="article.compelexType">
+                            <mat-option *ngFor="let cl of postsomplexityLevels">
+                                {{cl.complexity}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <mat-form-field>
+                    <textarea name="keyword" matInput [(ngModel)]="article.keywords" placeholder="Keywords" type="text"></textarea>
+                    <!-- <mat-error>
+                        {{errors.description}}
+                    </mat-error> -->
+                </mat-form-field>
+
+                <mat-accordion>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Article Categories
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                Note: Please select appropriate minor category below. Minor Categories*
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <div>
+                            <mat-radio-group name="category" [(ngModel)]="article.category">
+                                <mat-radio-button *ngFor="let c of postsCategories">{{c.category}}</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <mat-accordion>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Image Manager
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                Upload images / Find URL of images
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <div class="row">
+                            <div class="col-md-4"><input name="file" #file type="file" multiple (change)="upload(file.files)" accept="image/png, image/jpeg , image/gif"
+                                /></div>
+                            <div class="col-md-8" style="color: chocolate;">
+                                <h5>
+                                    Please remove images are not being used in this article.</h5>
+                            </div>
+                        </div>
+
+                        <div class="row" *ngIf="isBusy">
+                            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                        </div>
+                        <mat-accordion>
+                            <mat-expansion-panel *ngFor="let file of files; let i = index">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        Copy Image URL: <a>{{file.name}}</a> <i class="fa fa-remove" style="font-size:24px;color:red"></i>
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                        <div (click)="copy(file.url)">Click Here To Copy Url</div>
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <img src="{{file.url}}" style="width:100%;height:100%;" />
+                            </mat-expansion-panel>
+                        </mat-accordion>
+
+                        <!--  -->
+                        <!-- <mat-file-upload-queue #fileUploadQueue [fileAlias]="'file'"  [httpUrl]="'https://localhost:44395/api/upload'">
+                            <mat-file-upload [file]="file" [id]="i" 
+                            *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
+                        </mat-file-upload-queue> -->
+
+
+                        <!-- <h3>UPLOAD ARTICLE SOURCE CODE IF ANY</h3>
+                        <p>Do you have source code available with this article? If yes, Please click the browse button to upload
+                            your article source code. if they are in article, make sure zip the source code and upload it
+                            here. If you have multiple files, upload them one by one. </p>
+
+                        <label>Upload article source code</label>
+                        <div>
+                            <upload-component></upload-component>
+                            <label for="singleFile">Upload file</label>
+                            <input id="singleFile" type="file" [fileUploadInputFor]="fileUploadQueue" />
+                            <br>
+                            <mat-file-upload-queue #fileUploadQueue [fileAlias]="'file'" [httpUrl]="'https://localhost:44395/api/upload'">
+
+                                <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
+                            </mat-file-upload-queue>
+
+                            <div [fileUploadInputFor]="fileUploadQueue" class="upload-drop-zone">
+                                Just drag and drop files here
+                            </div>
+
+                        </div> -->
+
+                        <!-- <button mat-button (click)="openDialog()">Open dialog</button> -->
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <mat-accordion>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Article Contents
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                Type article contents in the below editor
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <!-- https://www.npmjs.com/package/ngx-ckeditor -->
+                        <ck-editor id="editor1" name="editor1" [(ngModel)]="article.contents" skin="moono-lisa" language="en" [config]="ckEditorconfig">
+                        </ck-editor>
+
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <mat-accordion>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Upload Source Code
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <h3>UPLOAD ARTICLE SOURCE CODE IF ANY</h3>
+                        <p>Do you have source code available with this article? If yes, Please click the browse button to upload
+                            your article source code. if they are in article, make sure zip the source code and upload it
+                            here. If you have multiple files, upload them one by one. </p>
+
+                        <div>
+                            <!-- [(ngModel)]="article.    sourceCodeId:number;" -->
+                            <upload-component></upload-component>
+                            <!-- <label for="singleFile">Upload file</label>
+                            <input id="singleFile" type="file" [fileUploadInputFor]="fileUploadQueue" /> -->
+                            <!-- <br>
+                            <mat-file-upload-queue #fileUploadQueue [fileAlias]="'file'" [httpUrl]="'https://localhost:44395/api/upload'">
+
+                                <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
+                            </mat-file-upload-queue>
+
+                            <div [fileUploadInputFor]="fileUploadQueue" class="upload-drop-zone">
+                                Just drag and drop files here
+                            </div> -->
+
+                        </div>
+
+                    </mat-expansion-panel>
+
+                </mat-accordion>
+                <button (click)="create();">Click ME</button>
+                <button mat-raised-button style="background-color:#C3D0D8;color: aliceblue" [disabled]="!userRegistrationForm.valid" (click)="onSubmit()">Register</button>
+                <button mat-raised-button style="background-color:#C3D0D8;color: aliceblue" (click)="click()">Click</button>
+
+            </form>
+        </div>
+    </mat-card>
+
+</div>

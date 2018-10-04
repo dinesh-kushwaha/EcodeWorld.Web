@@ -1,0 +1,154 @@
+<div id="page-wrapper">
+    <div class="bootstrap snippet">
+        <!-- <div class="row">
+            <div class="col-sm-10">
+                <h1>User name</h1>
+            </div>
+            <div class="col-sm-2"><a href="/users" class="pull-right"><img title="profile image" class="img-circle img-responsive" src="http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100"></a></div>
+        </div> -->
+        <div class="row">
+            <div class="col-sm-3">
+                <!--left col-->
+
+                <div class="text-center">
+                    <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+                    <h6>Upload a different photo...</h6>
+                    <input type="file" class="text-center center-block file-upload">
+                </div>
+                <br>
+
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">Website <i class="fa fa-link fa-1x"></i></div>
+                    <div class="panel-body"><a href="http://bootnipets.com">bootnipets.com</a></div>
+                </div>
+
+
+                <ul class="list-group">
+                    <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong></span> 125</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong></span> 13</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li>
+                </ul>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">Social Media</div>
+                    <div class="panel-body">
+                        <i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i>                        <i class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
+                    </div>
+                </div>
+
+            </div>
+            <!--/col-3-->
+
+            <div class="col-sm-9">
+
+                <mat-tab-group>
+                    <mat-tab label="Personal">
+
+                        <form [formGroup]="userRegistrationForm" novalidate>
+                            <div class="example-container" style="padding-top: 25px;">
+                                <div formGroupName="nameGroup">
+                                    <mat-form-field>
+                                        <input matInput placeholder="First name" type="text" formControlName="firstName" [(ngModel)]="model.firstName">
+                                        <mat-error>
+                                            {{errors.firstName}}
+                                        </mat-error>
+                                    </mat-form-field>
+                                    <mat-form-field>
+                                        <input matInput placeholder="Middle name" type="text" formControlName="middleName" [(ngModel)]="model.middleName">
+                                        <!-- <mat-error>
+                                        {{errors.fullName}}
+                                    </mat-error> -->
+                                    </mat-form-field>
+                                    <mat-form-field>
+                                        <input matInput placeholder="Last name" type="text" formControlName="lastName" [(ngModel)]="model.lastName">
+                                        <mat-error>
+                                            {{errors.lastName}}
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div formGroupName="companyGroup">
+                                    <mat-form-field>
+                                        <input matInput placeholder="Designation" type="text" formControlName="title" [(ngModel)]="model.title">
+                                        <mat-error>
+                                            {{errors.title}}
+                                        </mat-error>
+                                    </mat-form-field>
+                                    <mat-form-field>
+                                        <input matInput placeholder="Company" type="text" formControlName="company" [(ngModel)]="model.company">
+                                        <mat-error>
+                                            {{errors.company}}
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Description" type="text" formControlName="description" [(ngModel)]="model.description"></textarea>
+                                    <mat-error>
+                                        {{errors.description}}
+                                    </mat-error>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <input matInput placeholder="Highest Qualification" type="text" formControlName="highestQualification" [(ngModel)]="model.highestQualification">
+                                    <mat-error>
+                                        {{errors.highestQualification}}
+                                    </mat-error>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <textarea matInput placeholder="About Me" formControlName="aboutMe" [(ngModel)]="model.aboutMe"></textarea>
+                                    <mat-error>
+                                        {{errors.aboutMe}}
+                                    </mat-error>
+                                </mat-form-field>
+                                <!-- <div formGroupName="emailGroup">
+                                    <mat-form-field>
+                                        <input matInput placeholder="Email address" type="email" formControlName="email">
+                                        <mat-error>
+                                            {{errors.email}}
+                                        </mat-error>
+                                    </mat-form-field>
+
+                                    <mat-form-field>
+                                        <input matInput placeholder="Confirm email address" type="email" formControlName="confirmEmail" [errorStateMatcher]="confirmValidParentMatcher">
+                                        <mat-error>
+                                            {{errors.confirmEmail}}
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+
+                                <div formGroupName="passwordGroup">
+                                    <mat-form-field>
+                                        <input matInput placeholder="Password" type="password" formControlName="password">
+                                        <mat-error>
+                                            {{errors.password}}
+                                        </mat-error>
+                                    </mat-form-field>
+
+                                    <mat-form-field>
+                                        <input matInput placeholder="Confirm password" type="password" formControlName="confirmPassword" [errorStateMatcher]="confirmValidParentMatcher">
+                                        <mat-error>
+                                            {{errors.confirmPassword}}
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div> -->
+                                <button mat-raised-button [disabled]="!userRegistrationForm.valid" (click)="onSubmit()">Register</button>
+                                <button mat-raised-button (click)="click()">Click</button>
+                            </div>
+                        </form>
+
+                    </mat-tab>
+                    <mat-tab label="Contact">Contact</mat-tab>
+                    <mat-tab label="Address"> Address </mat-tab>
+                    <mat-tab label="Qualification"> Qualification </mat-tab>
+                    <mat-tab label="Certicication"> Certicication </mat-tab>
+                    <mat-tab label="Speciality"> Speciality </mat-tab>
+                </mat-tab-group>
+            </div>
+            <!--/tab-content-->
+
+        </div>
+        <!--/col-9-->
+    </div>
+    <!--/row-->
+</div>
