@@ -13,7 +13,7 @@ export class PostStatus{
     pstatus:string;
 }
 
-export class ComplexityLevels{
+export class PostsComplexityLevels{
     id:number;
     complexity:string;
 }
